@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive Valentine's Card</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: #ffdde1;
+            overflow: hidden;
+        }
+
+        .card-container {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            perspective: 1000px;
+        }
+
+        .card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: all 1s ease;
+            cursor: pointer;
+        }
+
+        .card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-inner {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .card-front {
+            background: #ff4d6d;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transform: rotateY(0deg);
+        }
+
+        .card-inner {
+            background: #fff;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .heart-btn {
+            width: 100px;
+            height: 100px;
+            background: #fff;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .heart {
+            font-size: 50px;
+            color: #ff4d6d;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: #fff;
+            font-size: 2.5em;
+            text-align: center;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .message {
+            font-family: 'Dancing Script', cursive;
+            font-size: 24px;
+            color: #590d22;
+            text-align: center;
+            line-height: 1.6;
+            max-width: 80%;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+        }
+
+        .glitter {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(0.95); }
+        }
+
+        @keyframes glitter {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="card" onclick="this.classList.toggle('flipped')">
+            <div class="card-front">
+                <div class="glitter"></div>
+                <div class="heart-btn">
+                    <div class="heart">❤</div>
+                </div>
+                <h1>Chuchunder Keliye Valentine's Surprise!</h1>
+            </div>
+            <div class="card-inner">
+                <button class="close-btn" onclick="event.stopPropagation(); this.parentElement.parentElement.classList.remove('flipped')">×</button>
+                <div class="message">
+                    <p>Mere pyaare ladlaay chomulaal,</p>
+                    <p>Even though you are khadudest<br> 
+                     but are the most sweetest lil kid in heart<br>
+                    still I love you cutu chomulaal.<br>
+                    thank you mere ko time ti time pani pine ko remind krne kliye</p>
+                    <p>Lets play new pc games,quarrel,and love eachother more and more daily till 2100 ~<3 <br>
+                    <span style="color: #ff4d6d;">teri pyaari chotababu</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add glitter effect
+        const glitter = document.querySelector('.glitter');
+        for (let i = 0; i < 50; i++) {
+            const star = document.createElement('div');
+            star.style.position = 'absolute';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.width = '4px';
+            star.style.height = '4px';
+            star.style.background = 'rgba(255, 255, 255, 0.8)';
+            star.style.borderRadius = '50%';
+            star.style.animation = glitter ${1 + Math.random() * 2}s infinite;
+            star.style.transform = rotate(${Math.random() * 360}deg);
+            glitter.appendChild(star);
+        }
+    </script>
+</body>
+</html>
